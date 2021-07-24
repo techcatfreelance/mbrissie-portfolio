@@ -1,0 +1,9 @@
+{
+  "name": "Michael Brissie",
+  "subtitle": "3d artist",
+  "navigation": [
+    { "name": "Reel", "url":"/" },
+    { "name": "Artwork", "url":"/artwork" },
+    { "name": "About", "url":"/about" }
+  ]
+}

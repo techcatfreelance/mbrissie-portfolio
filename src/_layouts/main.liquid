@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  </head>
+
+  <body class="bg-secondary">
+
+    <header class="flex p-5">
+
+      <div class="w-1/2">
+        <h1 class="text-primary font-bold text-5xl lowercase">{{ settings.name }}</h1>
+        <p class="text-gray-400 font-light uppercase">{{ settings.subtitle }}</p>
+      </div>
+
+      <nav class="
+        w-1/2 
+        text-gray-400
+        flex justify-end gap-2 content-center
+      ">
+        {% for item in settings.navigation -%}
+        <a class="pt-4 font-light uppercase" href="{{ item.url }}">
+        {{ item.name }}
+        </a>
+        {% endfor %}
+      </nav>
+
+    </header>
+
+    <main class="
+      m-5
+      {% comment %} border-red border-2 {% endcomment %}
+      flex flex-col gap-2
+    ">
+      {{ content }}
+    </main>
+
+  </body>
+
+</html>
