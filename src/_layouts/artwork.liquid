@@ -1,0 +1,25 @@
+---
+title: About
+layout: main
+---
+
+
+<div class="
+  text-primary
+  bg-black
+  flex flex-col
+  p-4
+  w-full
+">
+  <h2 class="self-center text-3xl font-regular uppercase">{{ title }}</h2>
+  <h6 class="self-center text-md font-thin normal-case">{{ subtitle }}</h6>
+</div>
+
+<img 
+  class="bg-black"
+  src="/asd"/
+>
+
+{%- for p in collections.artwork -%}
+  <p>{{ p.data.title }}</p>
+{%- endfor -%}

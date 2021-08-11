@@ -33,12 +33,14 @@
 
     </header>
 
-    <main class="
-      m-5
-      {% comment %} border-red border-2 {% endcomment %}
-      flex flex-col gap-2
-    ">
-      {{ content }}
+    <main class="flex flex-col items-center">
+      <div class="
+        w-full 
+        flex flex-col gap-2 items-center
+        max-w-screen-lg
+      ">      
+        {{ content }}
+      </div>
     </main>
 
   </body>
