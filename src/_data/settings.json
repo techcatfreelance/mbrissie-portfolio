@@ -3,7 +3,7 @@
   "subtitle": "3d artist",
   "navigation": [
     { "name": "Reel", "url":"/" },
-    { "name": "Artwork", "url":"/artwork" },
+    { "name": "Artwork", "url":"/artwork/alien-smg" },
     { "name": "About", "url":"/about" }
   ]
 }
