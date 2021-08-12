@@ -16,10 +16,29 @@ layout: main
 </div>
 
 <img 
-  class="bg-black"
-  src="/asd"/
->
+  class="bg-black w-full"
+  src="{{ mainImage }}"
+/>
 
+<div class="
+bg-secondary
+flex pb-4 pt-4
+absolute inset-x-0 bottom-0 
+">
 {%- for p in collections.artwork -%}
-  <p>{{ p.data.title }}</p>
+  
+  <a href="{{ p.url }}">
+    <img 
+      class="
+      w-48
+      {% if page.url == p.url %} 
+      border-2 border-primary 
+      {% else %}
+      opacity-50
+      {% endif %}
+      "
+      src="{{ p.data.mainImage }}" 
+    />
+  </a>
 {%- endfor -%}
+<div>
