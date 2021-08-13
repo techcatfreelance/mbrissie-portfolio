@@ -28,7 +28,9 @@ absolute inset-x-0 bottom-0
 {%- for p in collections.artwork -%}
   
   <a href="{{ p.url }}">
-    <img 
+    {% assign imgPath = "./src" | append: p.data.mainImage %}
+    {% thumbnail imgPath "" %}
+    <!-- <img 
       class="
       w-48
       {% if page.url == p.url %} 
@@ -38,7 +40,7 @@ absolute inset-x-0 bottom-0
       {% endif %}
       "
       src="{{ p.data.mainImage }}" 
-    />
+    /> -->
   </a>
 {%- endfor -%}
 <div>
