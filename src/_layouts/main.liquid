@@ -12,36 +12,7 @@
 
   <body class="bg-secondary">
 
-    <header class="flex p-5">
-
-      <div class="w-1/2">
-        <h1 class="text-primary font-bold text-5xl lowercase">{{ settings.name }}</h1>
-        <p class="text-gray-400 font-light uppercase">{{ settings.subtitle }}</p>
-      </div>
-
-      <nav class="
-        w-1/2 
-        text-gray-400
-        flex justify-end gap-2 content-center
-      ">
-        {% for item in settings.navigation -%}
-        <a class="pt-4 font-light uppercase" href="{{ item.url }}">
-        {{ item.name }}
-        </a>
-        {% endfor %}
-      </nav>
-
-    </header>
-
-    <main class="flex flex-col items-center">
-      <div class="
-        w-full 
-        flex flex-col gap-2 items-center
-        max-w-screen-lg
-      ">      
-        {{ content }}
-      </div>
-    </main>
+    {{ content }}
 
   </body>
 

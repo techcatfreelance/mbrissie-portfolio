@@ -2,45 +2,52 @@
 title: About
 layout: main
 ---
+<div class="flex flex-col max-h-screen"> 
+  <div class="flex-auto overflow-y-scroll">
+    {% include header %}
 
+    <main class="flex flex-col items-center">
+      <div class="
+        w-full 
+        flex flex-col gap-2 items-center
+        max-w-screen-lg
+      ">      
+        <div class="
+          text-primary
+          bg-black
+          flex flex-col
+          p-4
+          w-full
+        ">
+          <h2 class="self-center text-3xl font-regular uppercase">{{ title }}</h2>
+          <h6 class="self-center text-md font-thin normal-case">{{ subtitle }}</h6>
+        </div>
 
-<div class="
-  text-primary
-  bg-black
-  flex flex-col
-  p-4
-  w-full
-">
-  <h2 class="self-center text-3xl font-regular uppercase">{{ title }}</h2>
-  <h6 class="self-center text-md font-thin normal-case">{{ subtitle }}</h6>
+        <img 
+          class="bg-black w-full"
+          src="{{ mainImage }}"
+        />
+      </div>
+    </main>
+  </div>
+
+  <footer class="bg-secondary flex pb-4 pt-4">
+    {%- for p in collections.artwork -%}
+    <a href="{{ p.url }}">
+      {% assign imgPath = "./src" | append: p.data.mainImage %}
+      {% thumbnail imgPath "" %}
+      <!-- <img 
+        class="
+        w-48
+        {% if page.url == p.url %} 
+        border-2 border-primary 
+        {% else %}
+        opacity-50
+        {% endif %}
+        "
+        src="{{ p.data.mainImage }}" 
+      /> -->
+    </a>
+    {%- endfor -%}
+  <footer>
 </div>
-
-<img 
-  class="bg-black w-full"
-  src="{{ mainImage }}"
-/>
-
-<div class="
-bg-secondary
-flex pb-4 pt-4
-absolute inset-x-0 bottom-0 
-">
-{%- for p in collections.artwork -%}
-  
-  <a href="{{ p.url }}">
-    {% assign imgPath = "./src" | append: p.data.mainImage %}
-    {% thumbnail imgPath "" %}
-    <!-- <img 
-      class="
-      w-48
-      {% if page.url == p.url %} 
-      border-2 border-primary 
-      {% else %}
-      opacity-50
-      {% endif %}
-      "
-      src="{{ p.data.mainImage }}" 
-    /> -->
-  </a>
-{%- endfor -%}
-<div>
