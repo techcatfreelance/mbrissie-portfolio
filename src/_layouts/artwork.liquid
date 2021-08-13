@@ -23,10 +23,12 @@ layout: main
           <h6 class="self-center text-md font-thin normal-case">{{ subtitle }}</h6>
         </div>
 
+        {%- for img in images -%}
         <img 
           class="bg-black w-full"
-          src="{{ mainImage }}"
+          src="{{ img }}"
         />
+        {%- endfor -%}
       </div>
     </main>
   </div>
@@ -34,7 +36,7 @@ layout: main
   <footer class="bg-secondary flex pb-4 pt-4">
     {%- for p in collections.artwork -%}
     <a href="{{ p.url }}">
-      {% assign imgPath = "./src" | append: p.data.mainImage %}
+      {% assign imgPath = "./src" | append: p.data.images[0] %}
       {% thumbnail imgPath "" %}
       <!-- <img 
         class="
