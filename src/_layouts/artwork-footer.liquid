@@ -1,0 +1,40 @@
+<footer style="z-index: 10" class="
+  bg-secondary 
+  pb-4 pt-4 
+  shadow
+  flex flex-col gap-2 items-center
+">
+  <div class="flex gap-2">
+    {%- for tag in settings.artworkTags -%}
+      <button class="bg-gray-600 text-gray-400 rounded p-1 uppercase text-xs">{{ tag }}</button>
+    {%- endfor -%}
+  </div>
+
+  <div class="flex gap-2">
+    {%- for p in collections.artwork -%}
+    <a href="{{ p.url }}">
+      <!-- 
+        TODO: started using data attributes here but would be nice if I could calculate which pages are in which category and store them in data 
+        as doing it this way won't scale very well for 100s of images.
+      -->
+      <div data-tag="{{p.data.category}}" class="
+        w-48
+        {% if page.url == p.url %} 
+        border-2 border-primary 
+        {% else %}
+        border-2 border-black
+        opacity-30
+        {% endif %}
+      ">
+        {% assign imgPath = "./src" | append: p.data.images[0] %}
+        {% thumbnail imgPath "" %}
+      </div>
+    </a>
+    {%- endfor -%}
+  <div>
+
+<footer>
+
+<script>
+  console.log("hello!")
+</script>

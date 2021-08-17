@@ -5,5 +5,12 @@
     { "name": "Reel", "url":"/" },
     { "name": "Artwork", "url":"/artwork/alien-smg" },
     { "name": "About", "url":"/about" }
+  ],
+  "artworkTags": [
+    "all",
+    "creatures",
+    "environments",
+    "props",
+    "concepts"
   ]
 }

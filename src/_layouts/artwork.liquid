@@ -25,31 +25,18 @@ layout: main
 
         {%- for img in images -%}
         <img 
-          class="bg-black w-full"
+          class="bg-black w-full border-4 border-black"
           src="{{ img }}"
         />
         {%- endfor -%}
       </div>
     </main>
+
+    <!-- some spacing before the footer to ensure the last image isn't cutoff -->
+    <br/>
+    <br/>
   </div>
 
-  <footer class="bg-secondary flex pb-4 pt-4">
-    {%- for p in collections.artwork -%}
-    <a href="{{ p.url }}">
-      {% assign imgPath = "./src" | append: p.data.images[0] %}
-      {% thumbnail imgPath "" %}
-      <!-- <img 
-        class="
-        w-48
-        {% if page.url == p.url %} 
-        border-2 border-primary 
-        {% else %}
-        opacity-50
-        {% endif %}
-        "
-        src="{{ p.data.mainImage }}" 
-      /> -->
-    </a>
-    {%- endfor -%}
-  <footer>
+  {% include artwork-footer %}
+
 </div>
