@@ -1,6 +1,7 @@
 // this file does not trigger rebuilds, must restart server!
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   purge: {
@@ -33,5 +34,18 @@ module.exports = {
 
   variants: {},
 
-  plugins: [],
+  plugins: [
+    plugin(function({ addUtilities }) {
+      const newUtilities = {
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none"
+        },
+        ".no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none"
+        }
+      }
+      addUtilities(newUtilities)
+    })
+  ]
 }
