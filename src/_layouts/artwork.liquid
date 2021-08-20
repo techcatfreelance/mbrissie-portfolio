@@ -8,9 +8,9 @@ layout: main
 
     <main class="flex flex-col items-center">
       <div class="
-        w-full 
         flex flex-col gap-2 items-center
         max-w-screen-lg
+        w-11/12
       ">      
         <div class="
           text-primary
@@ -24,6 +24,7 @@ layout: main
         </div>
 
         {%- for img in images -%}
+        <!-- TODO: make these clickable so that full res can be shown - maybe in new tab? -->
         <div class="bg-black w-full border-4 border-black">
           {% assign imgPath = "./src" | append: img %}
           {% lowresImg imgPath "" %}
