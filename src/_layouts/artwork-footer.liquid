@@ -5,20 +5,29 @@
   flex flex-col gap-2 items-center
 ">
   <div class="flex gap-2">
-    {%- for tag in settings.artworkTags -%}
-      <button class="bg-gray-600 text-gray-400 rounded p-1 uppercase text-xs">{{ tag }}</button>
+    {%- for category in settings.artworkCategories -%}
+      <button 
+        data-category="{{ category }}" 
+        onclick="handleFilterClick(this)"
+        class="js-filter-button bg-gray-600 text-gray-400 rounded p-1 uppercase text-xs"
+      >
+        {{ category }}
+    </button>
     {%- endfor -%}
   </div>
 
   <div class="flex gap-2 overflow-x-scroll no-scrollbar w-screen">
     {% assign visibleArtwork = collections.artwork %}
     {%- for p in visibleArtwork -%}
-    <a href="{{ p.url }}"
-    {% if page.url == p.url %} 
-    id="js-selected"
-    {% endif %}
+    <a
+      data-category="{{p.data.category}}" 
+      href="{{ p.url }}"
+      class="js-artwork-button"
+      {% if page.url == p.url %} 
+      id="js-selected"
+      {% endif %}
     >
-      <div data-tag="{{p.data.category}}" class="
+      <div class="
         w-48
         {% if page.url == p.url %} 
         border-2 border-primary 
@@ -39,4 +48,58 @@
 <script>
   let selectedElement = window.document.getElementById('js-selected');
   selectedElement.scrollIntoView({behavior: "auto", block: "center", inline: "center"});
+
+  let artworkButtons = document.getElementsByClassName("js-artwork-button");
+  let filterButtons = document.getElementsByClassName("js-filter-button");
+
+  var filterCategory = localStorage.getItem('filterCategory');
+  if (filterCategory === undefined || filterCategory === null) {
+    filterCategory = "all";
+  }
+  refreshArtworkFilter();
+  refreshButtonFilter();
+
+  function refreshButtonFilter() {
+    for (let i = 0; i < filterButtons.length; i++) {
+      let category = filterButtons[i].dataset.category;
+      if (category == filterCategory) {
+        // selected
+        filterButtons[i].classList.add("text-gray-600", "bg-primary");
+        filterButtons[i].classList.remove("bg-gray-600", "text-gray-400");
+      } else {
+        // unselected
+        filterButtons[i].classList.add("bg-gray-600", "text-gray-400");
+        filterButtons[i].classList.remove("text-gray-600", "bg-primary");
+      }
+    }
+  }
+
+  function refreshArtworkFilter() {
+    if (filterCategory == "all") {
+      for (let i = 0; i < artworkButtons.length; i++) {
+        artworkButtons[i].style.display = "block";
+        artworkButtons[i].classList.remove("absolute");
+      }
+    } else {
+      for (let i = 0; i < artworkButtons.length; i++) {
+        let category = artworkButtons[i].dataset.category;
+        if (category == filterCategory) {
+          // show
+          artworkButtons[i].style.display = "block";
+          artworkButtons[i].classList.remove("absolute");
+        } else {
+          // hide
+          artworkButtons[i].style.display = "none";
+          artworkButtons[i].classList.add("absolute");
+        }
+      }
+    }
+  }
+
+  function handleFilterClick(e) {
+    filterCategory = e.dataset.category;
+    localStorage.setItem('filterCategory', filterCategory);
+    refreshArtworkFilter();
+    refreshButtonFilter();
+  }
 </script>

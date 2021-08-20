@@ -6,7 +6,7 @@
     { "name": "Artwork", "url":"/artwork/alien-smg" },
     { "name": "About", "url":"/about" }
   ],
-  "artworkTags": [
+  "artworkCategories": [
     "all",
     "creatures",
     "environments",
