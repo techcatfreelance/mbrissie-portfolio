@@ -24,10 +24,12 @@ layout: main
         </div>
 
         {%- for img in images -%}
-        <img 
-          class="bg-black w-full border-4 border-black"
-          src="{{ img }}"
-        />
+        <!-- <img 
+          class="bg-black w-full border-4 border-black lozad"
+          data-src="{{ img }}"
+        /> -->
+        {% assign imgPath = "./src" | append: img %}
+        {% artworkImg imgPath "" %}
         {%- endfor -%}
       </div>
     </main>
