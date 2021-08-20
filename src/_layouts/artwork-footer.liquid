@@ -16,7 +16,14 @@
     {%- endfor -%}
   </div>
 
-  <div class="flex gap-2 overflow-x-scroll no-scrollbar w-screen">
+  <div id="js-artwork-container" class="flex gap-2 overflow-x-scroll no-scrollbar w-screen">
+    <!-- TODO: these need to scale based on screen res -->
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
+
     {% assign visibleArtwork = collections.artwork %}
     {%- for p in visibleArtwork -%}
     <a
@@ -41,14 +48,20 @@
       </div>
     </a>
     {%- endfor -%}
+
+    <!-- TODO: these need to scale based on screen res -->
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
+    <div class="flex-none w-48"></div>
   <div>
 
 <footer>
 
 <script>
   let selectedElement = window.document.getElementById('js-selected');
-  selectedElement.scrollIntoView({behavior: "auto", block: "center", inline: "center"});
-
+  let artworkContainer = window.document.getElementById('js-artwork-container');
   let artworkButtons = document.getElementsByClassName("js-artwork-button");
   let filterButtons = document.getElementsByClassName("js-filter-button");
 
@@ -56,8 +69,29 @@
   if (filterCategory === undefined || filterCategory === null) {
     filterCategory = "all";
   }
-  refreshArtworkFilter();
+  refreshArtworkFilter(false);
   refreshButtonFilter();
+
+  // set scroll pos to last pos
+  var lastScrollPosX = localStorage.getItem('scrollPosX');
+  if (lastScrollPosX !== undefined) {
+    artworkContainer.scrollLeft = lastScrollPosX;
+  }
+  
+  window.setInterval(function(){
+    if (artworkContainer.scrollLeft == lastScrollPosX)
+    {
+      return;
+    }
+
+    lastScrollPosX = artworkContainer.scrollLeft;
+    localStorage.setItem('scrollPosX', lastScrollPosX);
+  }, 500);
+
+  // must happen after artwork filter so that all items have been hidden/shown before scrolling
+  // smooth scroll to selected artwork
+  // TODO: this is a little jank on mobile
+  selectedElement.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 
   function refreshButtonFilter() {
     for (let i = 0; i < filterButtons.length; i++) {
@@ -74,12 +108,14 @@
     }
   }
 
-  function refreshArtworkFilter() {
+  function refreshArtworkFilter(doScroll) {
+    let visibleButtons = [];
     if (filterCategory == "all") {
       for (let i = 0; i < artworkButtons.length; i++) {
         artworkButtons[i].style.display = "block";
         artworkButtons[i].classList.remove("absolute");
       }
+      visibleButtons = artworkButtons;
     } else {
       for (let i = 0; i < artworkButtons.length; i++) {
         let category = artworkButtons[i].dataset.category;
@@ -87,6 +123,7 @@
           // show
           artworkButtons[i].style.display = "block";
           artworkButtons[i].classList.remove("absolute");
+          visibleButtons.push(artworkButtons[i]);
         } else {
           // hide
           artworkButtons[i].style.display = "none";
@@ -94,12 +131,37 @@
         }
       }
     }
+
+    // scroll to first element, or fallback to selected element
+    if (doScroll) {
+      let selectedElement = window.document.getElementById('js-selected');
+      if (selectedElement.style.display == "none") {
+        // if selected element not visible, scroll middle element
+        let index = Math.floor(visibleButtons.length * 0.5);
+        scrollToTarget = visibleButtons[index];
+      } else {
+        // otherwise scroll to selected
+        scrollToTarget = selectedElement;
+      }
+      scrollToTarget.scrollIntoView({behavior: "auto", block: "center", inline: "center"});
+    }
+  }
+
+  function getChildIndex(element) {
+    let children = element.parentElement.children;
+    let len = children.length;
+    for (let i = 0; i < len; i++) {
+      if (children[i] == element) {
+        return i;
+      }
+    }
+    return -1;
   }
 
   function handleFilterClick(e) {
     filterCategory = e.dataset.category;
     localStorage.setItem('filterCategory', filterCategory);
-    refreshArtworkFilter();
+    refreshArtworkFilter(true);
     refreshButtonFilter();
   }
 </script>
