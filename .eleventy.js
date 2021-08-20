@@ -39,6 +39,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ './_tmp/style.css': './style.css' })
   eleventyConfig.addPassthroughCopy({ './src/media/': './media/' })
+  eleventyConfig.addPassthroughCopy({ './src/favicon.ico': './favicon.ico' })
 
   eleventyConfig.addLiquidShortcode("artworkThumbnail", artworkThumbnailShortcode);
   eleventyConfig.addLiquidShortcode("lowresImg", lowresImgShortcode);
