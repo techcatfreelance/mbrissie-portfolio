@@ -9,15 +9,15 @@ async function artworkThumbnailShortcode(src, alt) {
   let metadata = await Image(src, {
     widths: [200],
     formats: ["jpeg"],
-    urlPath: "/thumbnails/",
-    outputDir: "./_site/thumbnails/"
+    urlPath: "/media/thumbnails/",
+    outputDir: "./_site/media/thumbnails/"
   });
 
   let data = metadata.jpeg[metadata.jpeg.length - 1];
   return `<img class="lozad" data-src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
 }
 
-async function artworkImgShortcode(src, alt) {
+async function lowresImgShortcode(src, alt) {
   if (alt === undefined) {
     // You bet we throw an error on missing alt (alt="" works okay)
     throw new Error(`Missing \`alt\` on myImage from: ${src}`);
@@ -26,12 +26,12 @@ async function artworkImgShortcode(src, alt) {
   let metadata = await Image(src, {
     widths: [1280],
     formats: ["jpeg"],
-    urlPath: "/artwork/",
-    outputDir: "./_site/artwork/"
+    urlPath: "/media/low-res/",
+    outputDir: "./_site/media/low-res/"
   });
 
   let data = metadata.jpeg[metadata.jpeg.length - 1];
-  return `<img class="bg-black w-full border-4 border-black lozad" data-src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
+  return `<img class="lozad" data-src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
 }
 
 module.exports = function (eleventyConfig) {
@@ -41,7 +41,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ './src/media/': './media/' })
 
   eleventyConfig.addLiquidShortcode("artworkThumbnail", artworkThumbnailShortcode);
-  eleventyConfig.addLiquidShortcode("artworkImg", artworkImgShortcode);
+  eleventyConfig.addLiquidShortcode("lowresImg", lowresImgShortcode);
 
   return {
     dir: {
