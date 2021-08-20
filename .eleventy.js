@@ -1,6 +1,6 @@
 const Image = require("@11ty/eleventy-img");
 
-async function thumbnailShortcode(src, alt) {
+async function artworkThumbnailShortcode(src, alt) {
   if (alt === undefined) {
     // You bet we throw an error on missing alt (alt="" works okay)
     throw new Error(`Missing \`alt\` on myImage from: ${src}`);
@@ -23,7 +23,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ './_tmp/style.css': './style.css' })
   eleventyConfig.addPassthroughCopy({ './src/media/': './media/' })
 
-  eleventyConfig.addLiquidShortcode("thumbnail", thumbnailShortcode);
+  eleventyConfig.addLiquidShortcode("artworkThumbnail", artworkThumbnailShortcode);
 
   return {
     dir: {

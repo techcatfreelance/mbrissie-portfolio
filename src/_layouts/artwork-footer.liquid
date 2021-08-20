@@ -10,13 +10,14 @@
     {%- endfor -%}
   </div>
 
-  <div class="flex gap-2">
-    {%- for p in collections.artwork -%}
-    <a href="{{ p.url }}">
-      <!-- 
-        TODO: started using data attributes here but would be nice if I could calculate which pages are in which category and store them in data 
-        as doing it this way won't scale very well for 100s of images.
-      -->
+  <div class="flex gap-2 overflow-x-scroll no-scrollbar w-screen">
+    {% assign visibleArtwork = collections.artwork %}
+    {%- for p in visibleArtwork -%}
+    <a href="{{ p.url }}"
+    {% if page.url == p.url %} 
+    id="js-selected"
+    {% endif %}
+    >
       <div data-tag="{{p.data.category}}" class="
         w-48
         {% if page.url == p.url %} 
@@ -27,7 +28,7 @@
         {% endif %}
       ">
         {% assign imgPath = "./src" | append: p.data.images[0] %}
-        {% thumbnail imgPath "" %}
+        {% artworkThumbnail imgPath "" %}
       </div>
     </a>
     {%- endfor -%}
@@ -36,4 +37,6 @@
 <footer>
 
 <script>
+  let selectedElement = window.document.getElementById('js-selected');
+  selectedElement.scrollIntoView({behavior: "auto", block: "center", inline: "center"});
 </script>
