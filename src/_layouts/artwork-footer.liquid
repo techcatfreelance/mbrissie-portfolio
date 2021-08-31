@@ -17,12 +17,15 @@
   </div>
 
   <div id="js-artwork-container" class="flex gap-2 overflow-x-scroll no-scrollbar w-screen">
-    <!-- TODO: these need to scale based on screen res -->
+    <!-- spacers so that the end of the carousel can be centered horizontally -->
+    <!-- one should always be present -->
     <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
+    <!-- others are added based on screen size -->
+    <div class="flex-none w-48 absolute sm:relative"></div>
+    <div class="flex-none w-48 absolute md:relative"></div>
+    <div class="flex-none w-48 absolute lg:relative"></div>
+    <div class="flex-none w-48 absolute xl:relative"></div>
+    <div class="flex-none w-48 absolute 2xl:relative"></div>
 
     {% assign visibleArtwork = collections.artwork %}
     {%- for p in visibleArtwork -%}
@@ -49,12 +52,15 @@
     </a>
     {%- endfor -%}
 
-    <!-- TODO: these need to scale based on screen res -->
+    <!-- spacers so that the end of the carousel can be centered horizontally -->
+    <!-- one should always be present -->
     <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
-    <div class="flex-none w-48"></div>
+    <!-- others are added based on screen size -->
+    <div class="flex-none w-48 absolute sm:relative"></div>
+    <div class="flex-none w-48 absolute md:relative"></div>
+    <div class="flex-none w-48 absolute lg:relative"></div>
+    <div class="flex-none w-48 absolute xl:relative"></div>
+    <div class="flex-none w-48 absolute 2xl:relative"></div>
   <div>
 
 <footer>
@@ -91,7 +97,6 @@
 
   // must happen after artwork filter so that all items have been hidden/shown before scrolling
   // smooth scroll to selected artwork
-  // TODO: this is a little jank on mobile
   selectedElement.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
 
   function refreshButtonFilter() {
