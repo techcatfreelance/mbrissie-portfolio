@@ -2,7 +2,7 @@
 title: About
 layout: main
 ---
-<div class="flex flex-col max-h-screen"> 
+<div class="flex flex-col max-h-screen" style="height: calc(var(--vh, 1vh) * 100);"> 
   <div class="flex-auto overflow-y-scroll">
     {% include header %}
 
@@ -42,3 +42,18 @@ layout: main
   {% include artwork-footer %}
 
 </div>
+
+<script>
+  setViewHeight();
+
+  window.addEventListener("resize", function() {
+    setViewHeight();
+  });
+
+  // hack to ensure the view high on mobile is set correctly
+  // since the address bar disappears when you scroll down
+  function setViewHeight() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);  
+  };
+</script>
