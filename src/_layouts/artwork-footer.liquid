@@ -78,9 +78,10 @@
     artworkContainer.scrollLeft = lastScrollPosX;
   }
   
+  // update saved x-pos every 0.5s
   window.setInterval(function(){
-    if (artworkContainer.scrollLeft == lastScrollPosX)
-    {
+    if (artworkContainer.scrollLeft == lastScrollPosX) {
+      // don't save if not changed so we don't hammer the local storage API
       return;
     }
 
@@ -135,15 +136,25 @@
     // scroll to first element, or fallback to selected element
     if (doScroll) {
       let selectedElement = window.document.getElementById('js-selected');
-      if (selectedElement.style.display == "none") {
+      let scrollTarget = null;
+      let isSelectedElementVisible = selectedElement.style.display == "none";
+      if (isSelectedElementVisible) {
         // if selected element not visible, scroll middle element
         let index = Math.floor(visibleButtons.length * 0.5);
-        scrollToTarget = visibleButtons[index];
+        scrollTarget = visibleButtons[index];
+        scrollTarget.style.scrollMarginLeft = scrollTarget;
       } else {
         // otherwise scroll to selected
-        scrollToTarget = selectedElement;
+        scrollTarget = selectedElement;
       }
-      scrollToTarget.scrollIntoView({behavior: "auto", block: "center", inline: "center"});
+      
+      scrollTarget.scrollIntoView({behavior: "auto", block: "center", inline: "center"});
+
+      // hack to make scroll area center inbetween two elements when there is an even number
+      // must happen after scrollIntoView
+      if (isSelectedElementVisible && visibleButtons.length % 2 == 0) {
+        artworkContainer.scrollLeft -= scrollTarget.clientWidth * 0.5;
+      }
     }
   }
 
