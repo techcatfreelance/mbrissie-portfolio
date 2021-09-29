@@ -25,6 +25,10 @@ module.exports = {
         'Roboto',
         'sans-serif',
       ],
+      mono: [
+        'Roboto Slab',
+        'sans-serif',
+      ],
     },
 
     colors: {

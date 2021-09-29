@@ -1,14 +1,26 @@
 <header class="flex p-5">
 
   <div class="w-1/2">
-    <h1 class="text-primary font-bold text-5xl lowercase">{{ settings.name }}</h1>
+    <h1 class="text-primary font-mono tracking-widest font-bold text-2xl sm:text-4xl lowercase">{{ settings.name }}</h1>
     <p class="text-gray-400 font-light uppercase">{{ settings.subtitle }}</p>
+  </div>
+
+  <div class="w-1/2 
+    text-right
+    p-2
+    sm:hidden"
+  >
+    <button class="fas fa-bars
+      text-primary text-3xl"
+      onclick="toggleDrawer(true)"
+    ></button>
   </div>
 
   <nav class="
     w-1/2 
     text-gray-400
-    flex justify-end gap-2 content-center
+    sm:flex justify-end gap-2 content-center
+    hidden
   ">
     {% for item in settings.navigation -%}
     <a class="pt-4 font-light uppercase" href="{{ item.url }}">
@@ -18,3 +30,46 @@
   </nav>
 
 </header>
+
+<aside id="menu-drawer" class="
+  inset-y-0 right-0
+  p-8
+  w-full h-full
+bg-secondary
+  absolute z-10
+  text-center
+  flex flex-col
+  opacity-0
+  pointer-events-none
+  transition
+  "
+>
+  <div>
+    <button class="fas fa-times
+    text-primary text-4xl"
+      onclick="toggleDrawer(false)"
+    ></button>
+  </div>
+
+  {% for item in settings.navigation -%}
+    <a class="pt-4 text-primary font-light uppercase" href="{{ item.url }}">
+    {{ item.name }}
+    </a>
+  {% endfor %}
+</aside>
+
+<script>
+  function toggleDrawer(enable) {
+    let el = document.getElementById("menu-drawer");
+    if (enable) {
+      el.classList.remove("opacity-0");
+      el.classList.add("opacity-100");
+      // fixes drawer stealing mouse events when not visible
+      el.classList.remove("pointer-events-none");
+    } else {
+      el.classList.remove("opacity-100");
+      el.classList.add("opacity-0");
+      el.classList.add("pointer-events-none");
+    }
+  }
+</script>
