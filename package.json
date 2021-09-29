@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx @11ty/eleventy",
+    "build": "npx @11ty/eleventy & npx postcss styles/tailwind.css -o _site/style.css",
     "serve": "npx @11ty/eleventy --serve & npx postcss styles/tailwind.css --o _tmp/style.css --watch"
   },
   "keywords": [],
