@@ -1,5 +1,7 @@
 backend:
   name: git-gateway
+  repo: techcatfreelance/mbrissie-portfolio
+  branch: main
 
 site_url: https://www.mbrissie.com/
 
