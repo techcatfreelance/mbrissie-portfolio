@@ -6,17 +6,14 @@ layout: main
 {% include _layouts/header %}
 
 <main 
-  class="relative h-0 lg:m-32 md:m-16 m-8" 
-  style="padding-top: 56.25%"
+  class="relative xl:mx-64 lg:mx-32 md:mx-16 mx-8" 
 >
-  <iframe
-    class="absolute top-0 left-0 w-full h-full"
+  <div class="aspect-w-16 aspect-h-9">
+    <iframe 
     src="{{ settings.youtubeLink }}" 
-    frameborder="0" 
+    frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
-  ></iframe>
-
-  <a href="/media/Michael_Brissie-Resume_5-15-20.pdf">RESUME</a>
-  
+    ></iframe>
+  </div>
 </main>

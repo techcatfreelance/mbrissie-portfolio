@@ -5,7 +5,8 @@
   "navigation": [
     { "name": "Reel", "url":"/" },
     { "name": "Artwork", "url":"/artwork/alien-smg" },
-    { "name": "About", "url":"/about" }
+    { "name": "About", "url":"/about" },
+    { "name": "Resume", "url":"/media/Michael_Brissie-Resume_5-15-20.pdf" }
   ],
   "artworkCategories": [
     "all",
