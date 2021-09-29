@@ -9,7 +9,8 @@
       <button 
         data-category="{{ category }}" 
         onclick="handleFilterClick(this)"
-        class="js-filter-button bg-gray-600 text-gray-400 rounded p-1 uppercase text-xs"
+        class="js-filter-button bg-gray-600 text-gray-400 rounded p-1 uppercase text-xs 
+        hover:bg-gray-400 hover:text-gray-200"
       >
         {{ category }}
     </button>
@@ -44,6 +45,8 @@
         {% else %}
         border-2 border-black
         opacity-30
+        transition-opacity
+        hover:opacity-70
         {% endif %}
       ">
         {% assign imgPath = "./src" | append: p.data.images[0] %}
