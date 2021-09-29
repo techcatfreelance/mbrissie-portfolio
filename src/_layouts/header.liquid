@@ -31,9 +31,9 @@
     
     <a href="{{ item.url }}"  
       {% if rootPageUrl == rootItemUrl %} 
-      class="pt-4 font-light uppercase underline text-primary" 
+      class="tracking-widest pt-4 font-light uppercase underline text-primary" 
       {% else %}
-      class="pt-4 font-light uppercase hover:text-primary" 
+      class="tracking-widest pt-4 font-light uppercase hover:text-primary" 
       {% endif %}
     >
     {{ item.name }}
@@ -64,7 +64,7 @@ bg-secondary
   </div>
 
   {% for item in settings.navigation -%}
-    <a class="pt-4 text-primary font-light uppercase" href="{{ item.url }}">
+    <a class="tracking-widest pt-4 text-primary font-light uppercase" href="{{ item.url }}">
     {{ item.name }}
     </a>
   {% endfor %}
