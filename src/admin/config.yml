@@ -5,7 +5,8 @@ backend:
 
 site_url: https://www.mbrissie.com/
 
-media_folder: media
+media_folder: src/media
+public_folder: /media
 
 collections:
   - name: settings
