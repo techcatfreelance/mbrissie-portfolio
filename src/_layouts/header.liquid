@@ -23,7 +23,19 @@
     hidden
   ">
     {% for item in settings.navigation -%}
-    <a class="pt-4 font-light uppercase" href="{{ item.url }}">
+    {% assign splitPageUrl = page.url | split: "/" %}
+    {% assign rootPageUrl = splitPageUrl[1] %}
+
+    {% assign splitItemUrl = item.url | split: "/" %}
+    {% assign rootItemUrl = splitItemUrl[1] %}
+    
+    <a href="{{ item.url }}"  
+      {% if rootPageUrl == rootItemUrl %} 
+      class="pt-4 font-light uppercase underline text-primary" 
+      {% else %}
+      class="pt-4 font-light uppercase hover:text-primary" 
+      {% endif %}
+    >
     {{ item.name }}
     </a>
     {% endfor %}
