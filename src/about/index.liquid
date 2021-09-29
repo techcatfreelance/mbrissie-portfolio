@@ -32,6 +32,14 @@ layout: main
           <h6 class="self-center text-md font-thin normal-case">{{ settings.aboutContent }}</h6>
         </div>
 
+        <div class="text-gray-400 text-3xl flex gap-4 p-4">
+          {% for item in settings.socials -%}
+          <a href="{{ item.url }}">
+            <i class="{{ item.icon }} hover:text-primary"></i>
+          </a>
+          {% endfor %}
+        </div>
+
       </div>
     </main>
   </div>

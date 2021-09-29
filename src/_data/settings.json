@@ -16,5 +16,11 @@
     "environments",
     "props",
     "concepts"
+  ],
+  "socials": [
+    { "url": "https://www.linkedin.com/in/mbrissie", "icon":"fab fa-linkedin" },
+    { "url": "http://instagram.com/_mwomp", "icon":"fab fa-instagram-square" },
+    { "url": "http://www.facebook.com/mbrissie", "icon":"fab fa-facebook-square" },
+    { "url": "http://artstation.com/mwomp", "icon":"fab fa-artstation" }
   ]
 }
