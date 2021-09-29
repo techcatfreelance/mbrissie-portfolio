@@ -36,10 +36,12 @@ async function lowresImgShortcode(src, alt) {
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('./_tmp/style.css')
+  eleventyConfig.addWatchTarget('./admin/config.yml')
 
   eleventyConfig.addPassthroughCopy({ './_tmp/style.css': './style.css' })
   eleventyConfig.addPassthroughCopy({ './src/media/': './media/' })
   eleventyConfig.addPassthroughCopy({ './src/favicon.ico': './favicon.ico' })
+  eleventyConfig.addPassthroughCopy({ './src/admin/': './admin/' })
 
   eleventyConfig.addLiquidShortcode("artworkThumbnail", artworkThumbnailShortcode);
   eleventyConfig.addLiquidShortcode("lowresImg", lowresImgShortcode);

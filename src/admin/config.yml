@@ -1,0 +1,68 @@
+backend:
+  name: test-repo
+
+site_url: https://www.mbrissie.com/
+
+# TODO: should this point to the media folder?
+media_folder: assets/uploads
+
+collections:
+  - name: settings
+    label: 'Settings'
+    delete: false # Prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    files:
+      - name: general
+        label: 'Site Settings'
+        file: '_data/settings.json'
+        description: 'General Site Settings'
+        fields:
+          - { label: 'Name', name: name, widget: string }
+
+          - { label: 'Title', name: subtitle, widget: string }
+
+          - label: 'About Content'
+            name: aboutContent
+            widget: markdown
+            buttons: [ bold, italic, link, quote, bulleted-list, numbered-list ]
+            editor_components: []
+
+          - { label: 'About Image', name: aboutImage, widget: image }
+
+          - { label: 'Youtube Reel', name: youtubeLink, widget: string }
+
+          - label: 'Menu'
+            name: navigation
+            widget: list
+            fields: 
+              - { label: 'Menu Item', name: name, widget: string }
+              - { label: 'URL', name: url, widget: string }
+
+          - label: 'Artwork Categories'
+            name: artworkCategories
+            widget: list
+            default: [ "all" ]
+
+          - label: 'Socials'
+            name: socials
+            widget: list 
+            fields:
+              - { label: 'URL', name: url, widget: string }
+              - { label: 'Font Awesome Icon', name: icon, widget: string }
+            
+  - name: artwork
+    label: "Artwork"
+    folder: artwork
+    editor:
+      preview: false
+    create: true
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Content", name: subtitle, widget: markdown }
+      - { label: "Category", name: category, widget: string }
+      - { 
+          label: 'Images', name: images, widget: list, 
+          field: { label: "Image", name: image, widget: image }
+        }
+      

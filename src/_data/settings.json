@@ -1,15 +1,18 @@
 {
   "name": "Michael Brissie",
+  "subtitle": "3d artist",
+
   "aboutContent": "Currently living in Madison, WI, with Madeline and our cat, Gremlin. Graduated from Madison College with an Associate’s of Applied Arts in Animation.",
   "aboutImage": "/media/about.jpg",
   "youtubeLink": "https://www.youtube.com/embed/6OZ-SwirMqI",
-  "subtitle": "3d artist",
+  
   "navigation": [
     { "name": "Reel", "url":"/" },
     { "name": "Artwork", "url":"/artwork/alien-smg" },
     { "name": "About", "url":"/about" },
     { "name": "Resume", "url":"/media/Michael_Brissie-Resume_5-15-20.pdf" }
   ],
+
   "artworkCategories": [
     "all",
     "creatures",
@@ -17,6 +20,7 @@
     "props",
     "concepts"
   ],
+  
   "socials": [
     { "url": "https://www.linkedin.com/in/mbrissie", "icon":"fab fa-linkedin" },
     { "url": "http://instagram.com/_mwomp", "icon":"fab fa-instagram-square" },
