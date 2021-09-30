@@ -20,12 +20,13 @@ collections:
         file: 'src/_data/settings.json'
         description: 'General Site Settings'
         fields:
-          - { label: 'Name', name: name, widget: string }
+          - { label: 'Name', hint: 'The name that appears at the top of the site.', name: name, widget: string }
 
-          - { label: 'Title', name: subtitle, widget: string }
+          - { label: 'Title', hint: 'The job title that appears at the top of the site, under the name.', name: subtitle, widget: string }
 
           - label: 'About Content'
             name: aboutContent
+            hint: 'The content that appears on the "About" page.'
             widget: markdown
             buttons: [ bold, italic, link, quote, bulleted-list, numbered-list ]
             editor_components: []
@@ -35,23 +36,26 @@ collections:
           - { label: 'Youtube Reel', name: youtubeLink, widget: string }
 
           - label: 'Menu'
+            hint: 'Name and URL pairs that determine the links that appear in the main site navigation.'
             name: navigation
             widget: list
             fields: 
-              - { label: 'Menu Item', name: name, widget: string }
-              - { label: 'URL', name: url, widget: string }
+              - { label: 'Menu Item', hint: 'The text that is used for this menu item', name: name, widget: string }
+              - { label: 'URL', hint: 'The URL this menu item should link to. Use a leading forward slash (/) for site links.', name: url, widget: string }
 
           - label: 'Artwork Categories'
+            hint: 'The comma-separated category names that appear as filter buttons on the artwork nav bar.'
             name: artworkCategories
             widget: list
             default: [ "all" ]
 
           - label: 'Socials'
+            hint: 'The social buttons that appear on the "About" page.'
             name: socials
             widget: list 
             fields:
-              - { label: 'URL', name: url, widget: string }
-              - { label: 'Font Awesome Icon', name: icon, widget: string }
+              - { label: 'URL', hint: 'The URL this social button links to.', name: url, widget: string }
+              - { label: 'Font Awesome Icon', hint: 'The www.fontawesome.com icon that is used as the button. Please use the full style AND icon name e.g. "fab facebook".', name: icon, widget: string }
             
   - name: artwork
     label: "Artwork"
@@ -60,11 +64,11 @@ collections:
       preview: false
     create: true
     fields:
-      - { label: "Title", name: title, widget: string }
-      - { label: "Content", name: subtitle, widget: markdown }
-      - { label: "Category", name: category, widget: string }
+      - { label: "Title", hint: 'The title of the page/artwork.', name: title, widget: string }
+      - { label: "Content", hint: 'The text that appears under the title.', name: subtitle, widget: markdown }
+      - { label: "Category", hint: 'The category of this artwork which is used when filtering.', name: category, widget: string }
       - { 
-          label: 'Images', name: images, widget: list, 
+          label: 'Images', hint: 'The list of images that will appear on the page. The first image is used as the artwork nav button.', name: images, widget: list, 
           field: { label: "Image", name: image, widget: image }
         }
       
