@@ -17,7 +17,7 @@ collections:
     files:
       - name: general
         label: 'Site Settings'
-        file: '_data/settings.json'
+        file: 'src/_data/settings.json'
         description: 'General Site Settings'
         fields:
           - { label: 'Name', name: name, widget: string }
@@ -55,7 +55,7 @@ collections:
             
   - name: artwork
     label: "Artwork"
-    folder: artwork
+    folder: src/artwork
     editor:
       preview: false
     create: true
