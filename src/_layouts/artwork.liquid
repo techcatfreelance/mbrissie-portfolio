@@ -23,6 +23,19 @@ layout: main
           <h6 class="self-center text-md font-thin normal-case">{{ subtitle }}</h6>
         </div>
 
+        {% if youtubeURL %}
+        <div class="w-full">
+          <div class="aspect-w-16 aspect-h-9">
+            <iframe 
+            src="{{ youtubeURL }}" 
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        {% endif %}
+
         {%- for img in images -%}
         <!-- TODO: make these clickable so that full res can be shown - maybe in new tab? -->
         <div class="bg-black w-full border-4 border-black">
