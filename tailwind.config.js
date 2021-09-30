@@ -5,6 +5,7 @@ const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   purge: {
+    enabled: process.env.NODE_ENV === 'production',
     content: ['_site/**/*.html'],
     options: {
       safelist: [],
