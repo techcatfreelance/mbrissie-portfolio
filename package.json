@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build-tailwind && npm run minify-tailwind && npm run build-eleventy",
+    "build": "npm run build-eleventy && npm run build-tailwind && npm run minify-tailwind",
     "build-eleventy": "cross-env ELEVENTY_ENV=production NODE_ENV=production npx @11ty/eleventy",
     "build-tailwind": "cross-env NODE_ENV=production npx postcss styles/tailwind.css -o _site/style.css",
     "minify-tailwind": "cleancss -o _site/style.css _site/style.css",
