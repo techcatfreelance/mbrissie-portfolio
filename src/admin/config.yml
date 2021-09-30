@@ -65,8 +65,13 @@ collections:
     create: true
     fields:
       - { label: "Title", hint: 'The title of the page/artwork.', name: title, widget: string }
-      - { label: "Content", hint: 'The text that appears under the title.', name: subtitle, widget: markdown }
-      - { label: "Youtube Reel", hint: 'Optional. The Youtube embed url (not the normal URL) of the youtube video that will be displayed before any images.', required: false, name: youtubeURL, widget: string }
+      - label: "Content"
+        hint: 'The text that appears under the title.'
+        name: subtitle
+        widget: markdown 
+        buttons: [ bold, italic, link, quote, bulleted-list, numbered-list ]
+        editor_components: []
+      - { label: "Youtube Reel", hint: 'The Youtube embed url (not the normal URL) of the youtube video that will be displayed before any images.', required: false, name: youtubeURL, widget: string }
       - { label: "Category", hint: 'The category of this artwork which is used when filtering.', name: category, widget: string }
       - { 
           label: 'Images', hint: 'The list of images that will appear on the page. The first image is used as the artwork nav button.', name: images, widget: list, 
