@@ -1,4 +1,5 @@
 const Image = require("@11ty/eleventy-img");
+const eleventyPluginFilesMinifier = require("@sherby/eleventy-plugin-files-minifier");
 
 async function artworkThumbnailShortcode(src, alt) {
   if (alt === undefined) {
@@ -35,6 +36,10 @@ async function lowresImgShortcode(src, alt) {
 }
 
 module.exports = function (eleventyConfig) {
+  if (process.env.ELEVENTY_ENV === 'production') {
+    eleventyConfig.addPlugin(eleventyPluginFilesMinifier);
+  }
+
   eleventyConfig.addWatchTarget('./_tmp/style.css')
   eleventyConfig.addWatchTarget('./admin/config.yml')
 
