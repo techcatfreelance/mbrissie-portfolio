@@ -1,9 +1,11 @@
+Source for mbrissie.netlify.com.
+
 # Setup
 * `npm install`
-* `git init`
 
 # Testing
 `npm run serve`
+Will need to run twice so that tailwind files exist first.
 
 # Building
 `npm run build`
