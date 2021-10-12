@@ -3,7 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>
+      {% assign words = title | split: ' ' %}
+
+      {% capture titlecase %}
+        {% for word in words %}
+          {{ word | downcase | capitalize }}
+        {% endfor %}{% endcapture %}
+      {{ titlecase }}
+
+    </title>
     <link href="/style.css" type="text/css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
