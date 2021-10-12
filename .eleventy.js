@@ -32,7 +32,7 @@ async function lowresImgShortcode(src, alt) {
   });
 
   let data = metadata.jpeg[metadata.jpeg.length - 1];
-  return `<img class="lozad" data-src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
+  return `<img class="lozad w-full" data-src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
 }
 
 module.exports = function (eleventyConfig) {
