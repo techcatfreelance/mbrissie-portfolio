@@ -57,6 +57,10 @@ module.exports = {
         ".no-scrollbar": {
           "-ms-overflow-style": "none",
           "scrollbar-width": "none"
+        },
+        // fixes lazy loaded images flashing a broken image right before loading
+        "img:not([src])": {
+          "visibility": "hidden"
         }
       }
       addUtilities(newUtilities)
