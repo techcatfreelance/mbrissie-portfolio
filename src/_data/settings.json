@@ -1,19 +1,25 @@
 {
-  "name": "Michael Brissie",
-  "subtitle": "3d artist",
-  "siteDescription": "3D Artist based in Madison, WI.",
-
-  "aboutContent": "Currently living in Madison, WI, with Madeline and our cat, Gremlin. Graduated from Madison College with an Associate’s of Applied Arts in Animation.",
-  "aboutImage": "/media/about.jpg",
-  "youtubeLink": "https://www.youtube.com/embed/6OZ-SwirMqI",
-  
-  "navigation": [
-    { "name": "Reel", "url":"/" },
-    { "name": "Artwork", "url":"/artwork/alien-smg" },
-    { "name": "About", "url":"/about" },
-    { "name": "Resume", "url":"/media/Michael_Brissie-Resume_5-15-20.pdf" }
+  "socials": [
+    {
+      "url": "https://www.linkedin.com/in/mbrissie",
+      "icon": "fab fa-linkedin"
+    },
+    {
+      "url": "http://instagram.com/_mwomp",
+      "icon": "fab fa-instagram-square"
+    },
+    {
+      "url": "http://www.facebook.com/mbrissie",
+      "icon": "fab fa-facebook-square"
+    },
+    {
+      "url": "http://artstation.com/mwomp",
+      "icon": "fab fa-artstation"
+    }
   ],
-
+  "name": "Michael Brissie",
+  "aboutContent": "Currently living on Hilton Head Island SC, with my cat, Gremlin. Graduated from Madison College in Madison WI with an Associate’s of Applied Arts in Animation.",
+  "aboutImage": "/media/89712823_2357826094363656_8126009091022651392_n.jpg",
   "artworkCategories": [
     "all",
     "creatures",
@@ -21,11 +27,25 @@
     "props",
     "concepts"
   ],
-  
-  "socials": [
-    { "url": "https://www.linkedin.com/in/mbrissie", "icon":"fab fa-linkedin" },
-    { "url": "http://instagram.com/_mwomp", "icon":"fab fa-instagram-square" },
-    { "url": "http://www.facebook.com/mbrissie", "icon":"fab fa-facebook-square" },
-    { "url": "http://artstation.com/mwomp", "icon":"fab fa-artstation" }
-  ]
+  "navigation": [
+    {
+      "name": "Reel",
+      "url": "/"
+    },
+    {
+      "name": "Artwork",
+      "url": "/artwork/alien-smg"
+    },
+    {
+      "name": "About",
+      "url": "/about"
+    },
+    {
+      "name": "Resume",
+      "url": "/media/Michael_Brissie-Resume_5-15-20.pdf"
+    }
+  ],
+  "siteDescription": "3D Artist based in Madison, WI.",
+  "subtitle": "3d artist",
+  "youtubeLink": "https://www.youtube.com/embed/6OZ-SwirMqI"
 }
